@@ -10,6 +10,8 @@ export function request(config) {
 
   // 请求拦截
   instance.interceptors.request.use(res => {
+    // 为请求头对象，添加token验证的Authorization字段，保证拥有获取数据的权限
+    res.headers.Authorization = window.sessionStorage.getItem('token')
     return res
   }, err => {
     console.log(err);

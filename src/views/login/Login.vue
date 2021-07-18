@@ -4,7 +4,7 @@
       <!-- 头像区域 -->
       <div class="avatar_box">
         <img
-          src="~assets/img/user.jpg"
+          src="~assets/img/login/user.jpg"
           alt=""
           title="Hey,You could be the next Bill Gates~"
         />
@@ -78,6 +78,8 @@ export default {
           },
         ],
       },
+      // 节流阀
+      throttle: false,
     }
   },
   methods: {
@@ -89,9 +91,21 @@ export default {
       this.$refs.loginFormRef.validate(async (valid) => {
         // 预验证成功才会发送网络请求，减少服务器压力
         if (!valid) return
+        if (this.throttle) return
         const res = await getLoginData(this.loginForm)
+        // 登录失败
         if (res.meta.status !== 200) {
-          this.$message.error('登录失败！')
+          // 开启节流阀
+          this.throttle = true
+          this.$message({
+            type: 'error',
+            message: '登录失败！',
+            duration: 1500,
+            // 当消息提示关闭回调
+            onClose: () => {
+              this.throttle = false
+            },
+          })
         } else {
           // 1.将登录成功之后的token，保存到客户端的sessionStorage中
           //    1.1 项目中除了登录之外的其他API接口，必须在登录之后才能访问
