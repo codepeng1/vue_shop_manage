@@ -5,6 +5,8 @@ const Login = () => import('views/login/Login')
 const Home = () => import('views/home/Home')
 const Welcome = () => import('views/home/welcome/Welcome')
 const Users = () => import('views/home/user/Users')
+const Rights = () => import('views/home/power/rights/Rights')
+const Roles = () => import('views/home/power/role/Roles')
 
 
 Vue.use(VueRouter)
@@ -18,7 +20,9 @@ const routes = [
     redirect: '/welcome',
     children: [
       { path: '/welcome', component: Welcome },
-      { path: '/users', component: Users }
+      { path: '/users', component: Users },
+      { path: '/rights', component: Rights },
+      { path: '/roles', component: Roles },
     ]
   },
 ]
@@ -39,7 +43,13 @@ router.beforeEach((to, from, next) => {
   // 从sessionStorage中获取保存的token值
   const tokenStr = window.sessionStorage.getItem('token')
   // 如果token没有值, 强制跳转到登录页
-  tokenStr ? next() : next('/login')
+  if (tokenStr) {
+    // 用户通过地址栏访问时，也要添加activePath，否则首页的左侧菜单栏不会下拉等
+    window.sessionStorage.setItem('activePath', to.path)
+    next()
+  } else {
+    next('/login')
+  }
 })
 
 export default router

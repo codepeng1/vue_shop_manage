@@ -1,11 +1,4 @@
-import { request } from "./request";
-
-// 获取所有的菜单列表数据
-export function getMenuLists() {
-  return request({
-    url: '/menus'
-  })
-}
+import { request } from "network/request";
 
 // 获取用户列表数据
 export function getUserlist(queryInfo) {
@@ -57,5 +50,16 @@ export function removeUserById(id) {
   return request({
     url: `/users/${id}`,
     method: 'delete'
+  })
+}
+
+// 分配用户新角色
+export function AllotNewRole(userId, rid) {
+  return request({
+    url: `/users/${userId}/role`,
+    method: 'put',
+    data: {
+      rid
+    }
   })
 }

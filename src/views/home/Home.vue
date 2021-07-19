@@ -17,7 +17,7 @@ import HomeHeader from './childComps/HomeHeader.vue'
 import HomeAside from './childComps/HomeAside.vue'
 import HomeMain from './childComps/HomeMain.vue'
 
-import { getMenuLists } from 'network/home.js'
+import { getMenuLists } from 'network/home/home.js'
 
 export default {
   name: 'Home',

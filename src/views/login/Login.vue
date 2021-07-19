@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { getLoginData } from 'network/login.js'
+import { getLoginData } from 'network/login/login.js'
 
 export default {
   name: 'login',

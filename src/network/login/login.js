@@ -1,5 +1,6 @@
-import { request } from "./request";
+import { request } from "network/request";
 
+// 登录验证
 export function getLoginData(userInfo) {
   return request({
     url: '/login',
