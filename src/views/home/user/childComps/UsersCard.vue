@@ -248,7 +248,12 @@ export default {
       // 添加表单的规则验证对象
       addFormRules: {
         username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
+          {
+            required: true,
+            whitespace: true,
+            message: '请输入用户名',
+            trigger: 'blur',
+          },
           {
             min: 3,
             max: 10,
@@ -257,7 +262,12 @@ export default {
           },
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
+          {
+            required: true,
+            whitespace: true,
+            message: '请输入密码',
+            trigger: 'blur',
+          },
           {
             min: 6,
             max: 15,

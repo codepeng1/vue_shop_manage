@@ -215,7 +215,12 @@ export default {
       // 添加角色的规则验证对象
       addRoleFormRules: {
         roleName: [
-          { required: true, message: '请输入角色名称', trigger: 'blur' },
+          {
+            required: true,
+            whitespace: true,
+            message: '请输入角色名称',
+            trigger: 'blur',
+          },
           {
             min: 2,
             max: 10,
@@ -239,7 +244,12 @@ export default {
       // 编辑角色的规则验证对象
       editRoleFormRules: {
         roleName: [
-          { required: true, message: '请输入角色名称', trigger: 'blur' },
+          {
+            required: true,
+            whitespace: true,
+            message: '请输入角色名称',
+            trigger: 'blur',
+          },
           {
             min: 2,
             max: 10,
