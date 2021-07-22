@@ -262,12 +262,7 @@ export default {
           },
         ],
         password: [
-          {
-            required: true,
-            whitespace: true,
-            message: '请输入密码',
-            trigger: 'blur',
-          },
+          { required: true, whitespace: true,message: '请输入密码', trigger: 'blur' },
           {
             min: 6,
             max: 15,

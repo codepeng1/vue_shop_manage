@@ -53,3 +53,47 @@ export function delCategoryById(id) {
     method: 'delete'
   })
 }
+
+// 获取分类参数列表
+export function getCateParams(id, sel) {
+  return request({
+    url: `/categories/${id}/attributes`,
+    params: {
+      sel
+    }
+  })
+}
+
+// 添加参数
+export function addParams(id, attrName, attrSel) {
+  return request({
+    url: `/categories/${id}/attributes`,
+    method: 'post',
+    data: {
+      attr_name: attrName,
+      attr_sel: attrSel
+    }
+  })
+}
+
+// 编辑参数
+export function editParams(id, attrId, attrName, attrSel, attrVals) {
+  return request({
+    url: `/categories/${id}/attributes/${attrId}`,
+    method: 'put',
+    data: {
+      attr_name: attrName,
+      attr_sel: attrSel,
+      attr_vals: attrVals
+    }
+  })
+}
+
+// 删除参数
+export function delParams(ids) {
+  const { cat_id, attrid } = ids
+  return request({
+    url: `/categories/${cat_id}/attributes/${attrid}`,
+    method: 'delete'
+  })
+}
