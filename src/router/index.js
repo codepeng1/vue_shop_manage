@@ -9,6 +9,8 @@ const Rights = () => import('views/home/power/rights/Rights')
 const Roles = () => import('views/home/power/role/Roles')
 const Categories = () => import('views/home/goods/category/Categories')
 const Params = () => import('views/home/goods/cateParams/Params')
+const Goods = () => import('views/home/goods/goodsList/Goods')
+const GoodsAdd = () => import('views/home/goods/goodsList/GoodsAdd')
 
 Vue.use(VueRouter)
 
@@ -25,7 +27,9 @@ const routes = [
       { path: '/rights', component: Rights },
       { path: '/roles', component: Roles },
       { path: '/categories', component: Categories },
-      { path: '/params', component: Params }
+      { path: '/params', component: Params },
+      { path: '/goods', component: Goods },
+      { path: '/goods/add', component: GoodsAdd }
     ]
   },
 ]

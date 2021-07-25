@@ -97,3 +97,46 @@ export function delParams(ids) {
     method: 'delete'
   })
 }
+
+// 获取商品列表数据
+export function getGoodsList(queryInfo) {
+  return request({
+    url: '/goods',
+    params: queryInfo
+  })
+}
+
+// 删除商品
+export function delGoods(id) {
+  return request({
+    url: `/goods/${id}`,
+    method: 'delete'
+  })
+}
+
+// 添加商品
+export function addGoods(goodsInfo) {
+  return request({
+    url: '/goods',
+    method: 'post',
+    data: goodsInfo
+  })
+}
+
+// 通过id查询商品信息
+export function getGoodsInfoById(id) {
+  return request({
+    url: `/goods/${id}`
+  })
+}
+
+// 编辑商品
+export function editGoods(goodsInfo) {
+  const { goods_id } = goodsInfo
+  delete goodsInfo.goods_id
+  return request({
+    url: `/goods/${goods_id}`,
+    method: 'put',
+    data: goodsInfo
+  })
+}
